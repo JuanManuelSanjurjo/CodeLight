@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.titlebar {
+  /* height: 30px; */
+  /* background: #329ea3; */
+  user-select: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+
+.editor{
+    margin-top: 2px;
+    height: calc(100% - 2px);
+    /* overflow-y: auto; */
+
+}
