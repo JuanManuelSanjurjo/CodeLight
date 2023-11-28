@@ -6,7 +6,7 @@
     "distDir": "../dist"
   },
   "package": {
-    "productName": "snippet-app-tauri",
+    "productName": "Snippet playground",
     "version": "0.0.0"
   },
   "tauri": {
