@@ -19,7 +19,7 @@ function SnippetItem({snippetName}: Props) {
 
 
   async function handleDelete(snippetName: string) {
-    const confirm = await window.confirm("Are you sure yo want to delete the snippet?")
+    const confirm = await window.confirm("Are you sure you want to delete the file from de disk?")
     if(!confirm) return
 
     // const extension =  file.path.split(".").pop()

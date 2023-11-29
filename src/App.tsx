@@ -11,7 +11,7 @@ const App = () => {
   return (
     <div className='bg-[#16071b] h-screen w-screen fixed top-7  text-orange-50  grid grid-cols-12 overflow-auto  '>
       <TaskBar />
-      <div className="col-span-3 h-full border-r-2  border-slate-900  overflow-auto overflow-x-hidden ">
+      <div className="col-span-3 h-full border-r-2 border-slate-900  overflow-auto overflow-x-hidden ">
         <Form language={language} setLanguage={setLanguage}/>
         <SnippetList />
       </div>

@@ -5,6 +5,8 @@ import { writeTextFile } from '@tauri-apps/api/fs';
 import { join } from '@tauri-apps/api/path';
 import { useConfigStore } from '../store/configStore';
 
+
+
 const languages: { [key: string]: string }= {
   js : "javascript",
   ty: "typescript",
@@ -29,10 +31,12 @@ const languages: { [key: string]: string }= {
   txt: "plaintext"
 }
 
+
 function Editor() {
   const selectedSnippet = useSnippetStore( state => state.selectedSnippet)
   const [text, setText] = useState<string|undefined>("")
   const dir = useConfigStore(state => state.dir)
+
 
   useEffect(()=> {
     if(!selectedSnippet) return
