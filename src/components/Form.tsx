@@ -43,7 +43,7 @@ function Form({language, setLanguage}: Props) {
 
   return (
     <>
-    <button type='button' onClick={handleSetDirectory} className='bg-[#BE3144] w-full hover:bg-[#F05941] transition-colors rounded-sm'>Set directory</button>
+    <button type='button' onClick={handleSetDirectory} className='bg-[#4c0519] text-slate-200 mb-[2px] w-full hover:bg-[#F05941] transition-colors '>Set directory</button>
     <form
     onSubmit={ async (e) => {
       e.preventDefault()
@@ -62,13 +62,14 @@ function Form({language, setLanguage}: Props) {
       toast.success("Snippet saved", { duration: 2000, position:"bottom-right", style: {background: "#181818", color: "#fff"} })
     }}
     >
-      <div className='bg-[#16071b] flex justify-center items-center mb-[1px] rounded-sm'>
+      <div className='bg-[#16071b] mb-[2px] flex justify-center items-center  rounded-sm'>
         <input type="text" placeholder='Add snippet' 
-          className='bg-[#2a0d33] p-4 w-full border-none focus:outline-none' 
+          className='bg-[#2a0d33] p-4 w-full border-none outline-none focus:outline-none hover:opacity-75 focus:opacity-75' 
           onChange={(e)=> setSnippetName(e.target.value) }
           value={snippetName}
         />
-        <select name="language" className=' bg-[#BE3144] p-4 rounded-sm hover:bg-[#F05941]' onChange={(e)=> setLanguage(e.target.value)}>
+        <select name="language" className='bg-[#4c0519] text-slate-200 p-4 focus:outline-none' onChange={(e)=> setLanguage(e.target.value)}>
+            <option value="" disabled>Select languaje</option>
             <option value="js">javascript</option>
             <option value="ty">typescipt</option>
             <option value="c">c</option>

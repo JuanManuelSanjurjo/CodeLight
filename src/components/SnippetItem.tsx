@@ -12,7 +12,7 @@ interface Props {
 }
 
 
-function SnippetItem({snippetName, file}: Props) {
+function SnippetItem({snippetName}: Props) {
   const setSelectedSnippet = useSnippetStore(state => state.setSelectedSnippet)
   const selectedSnippet = useSnippetStore(store => store.selectedSnippet)
   const dir = useConfigStore(state => state.dir)
@@ -32,7 +32,7 @@ function SnippetItem({snippetName, file}: Props) {
 
 
   return (
-    <div className={twMerge(selectedSnippet?.name === snippetName ? "bg-[#BE3144]" : "",'flex justify-between py-2 px-4 hover:bg-[#4c0519] hover:cursor-pointer rounded-sm')}
+    <div className={twMerge(selectedSnippet?.name === snippetName ? "bg-[#BE3144]" : "",'text-slate-300  flex justify-between py-1 px-4 hover:bg-[#4c0519] hover:cursor-pointer ')}
         onClick={ async ()=>{ 
           // const extension =  file.path.split(".").pop()
           const filepath = await join(dir, `${snippetName}`)

@@ -1,6 +1,5 @@
 import { create } from "zustand";
 
-
 interface Config {
     dir: string,
     setDir:(directory: string) => void

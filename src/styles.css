@@ -2,7 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-
+*{
+  box-sizing: border-box;
+}
 .titlebar {
   /* height: 30px; */
   /* background: #329ea3; */
@@ -20,3 +22,4 @@
     /* overflow-y: auto; */
 
 }
+
