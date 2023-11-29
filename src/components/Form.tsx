@@ -10,10 +10,12 @@ import { useConfigStore } from '../store/configStore';
 interface Props {
   language: string,
   setLanguage:  React.Dispatch<React.SetStateAction<string>>;
+  sideBar: boolean
+  setSidebar:  React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 
-function Form({language, setLanguage}: Props) {
+function Form({language, setLanguage, sideBar, setSidebar}: Props) {
   const [snippetName, setSnippetName] = useState("")
   const addSnippetName = useSnippetStore(state => state.setSnippetName)
   const snippetNames = useSnippetStore((state) => state.snippetsNames);
@@ -41,16 +43,20 @@ function Form({language, setLanguage}: Props) {
     }
   }
 
+  function collapseSidebar(){
+    setSidebar(!sideBar)
+  }
+
   return (
     <>
     <div className='flex justify-center items-center w-full m-auto p-2 pb-0'>
-      <button type='button' onClick={handleSetDirectory} className='bg-[#4c0519] w-full text-slate-200  hover:bg-[#F05941] transition-colors '>Set directory</button>
+      <button type='button' onClick={handleSetDirectory} className='bg-[#4c0519] w-full text-slate-300  hover:bg-[#F05941] transition-colors '>Folder: </button>
+      <button type='button' onClick={collapseSidebar} className='bg-[#4c0519] outline outline-[#f0584196] outline-1 outline-offset-[-1px]  w-full text-slate-200  hover:bg-[#F05941] transition-colors '>&#8644;</button>
     </div>
     <form
     onSubmit={ async (e) => {
       e.preventDefault()
 
-      console.log(snippetNames)
       if (snippetNames.includes(`${snippetName}.${language}`) || !snippetNames || snippetName === "") {
         toast.error("Snippet can't be empty or have same name as another file", {duration: 4000, position: "bottom-right",style: {background: "#181818", color: "#fff"},});
         return;
@@ -70,7 +76,7 @@ function Form({language, setLanguage}: Props) {
           onChange={(e)=> setSnippetName(e.target.value) }
           value={snippetName}
         />
-        <select name="language" className='bg-[#4c0519] border-[#4c0519] border-t-[1px] p-2 text-slate-200 focus:outline-none' onChange={(e)=> setLanguage(e.target.value)}>
+        <select name="language" className='bg-[#4c0519] border-[#4c0519] border-t-[1px] p-2 text-slate-300 focus:outline-none' onChange={(e)=> setLanguage(e.target.value)}>
             <option value="" disabled>Select languaje</option>
             <option value="js">javascript</option>
             <option value="ty">typescipt</option>

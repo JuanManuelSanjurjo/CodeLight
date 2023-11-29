@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+:root{
+  --vscode-editor-background: #16071b;
+  
+}
+.monaco-editor, .monaco-editor .margin{
+  background-color: var(--vscode-editor-background) !important; 
+}
+
 *{
   box-sizing: border-box;
 }
@@ -22,4 +30,3 @@
     /* overflow-y: auto; */
 
 }
-

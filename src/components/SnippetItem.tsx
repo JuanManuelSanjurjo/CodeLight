@@ -24,7 +24,6 @@ function SnippetItem({snippetName}: Props) {
 
     // const extension =  file.path.split(".").pop()
     const filepath = await join(dir, `${snippetName}` )
-    console.log(filepath)
     await removeFile(filepath)
     toast.error("Snippet deleted", { duration: 2000, position:"bottom-right", style: {background: "#181818", color: "#fff"} })
 

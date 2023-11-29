@@ -22,7 +22,6 @@ function SnippetList() {
 		  }
 		  setDir(dir!)
 		  const files = await readDir(`${dir}` )
-		  console.log(files)
 		  setFiles(files)
 		  const filenames = files.map(file => file.name!)
 		  setSnippetsNames(filenames)
