@@ -4,7 +4,7 @@ import { create } from "zustand";
 interface Snippet {
     name: string,
     code: string
-    // lang: string,
+    dir: string,
 }
 
 interface SnippetState {

@@ -1,10 +1,11 @@
 import  { useEffect, useState } from 'react'
 import {Editor as EditorVs} from '@monaco-editor/react';
 import { useSnippetStore } from '../store/snippetStore'
-import { writeTextFile } from '@tauri-apps/api/fs';
+import { readTextFile, writeTextFile } from '@tauri-apps/api/fs';
 import { join } from '@tauri-apps/api/path';
 import { useConfigStore } from '../store/configStore';
 import { Triangle } from  'react-loader-spinner'
+import { dialog } from '@tauri-apps/api';
 
 export const languages: { [key: string]: string }= {
   js : "javascript",
@@ -42,33 +43,64 @@ function Editor() {
     if(!selectedSnippet) return
 
     const autoSave = setTimeout( async()=>{
-      const filepath = await join(dir, `${selectedSnippet.name}`)
+      console.log(selectedSnippet.dir)
+      const filepath = await join(`${selectedSnippet.dir}/${selectedSnippet.name}`)
+      console.log(filepath)
       if(text){
         await writeTextFile(filepath, text)  
       }
-      
     }, 1000)
 
     return () => {clearTimeout(autoSave)}
   },[text])
 
+  useEffect(() => {
+    const listenerHandleOpenFile = (event: KeyboardEvent) => {
+      if (event.code === 'KeyN' && event.ctrlKey) {
+        handleOpenFile()
+      }
+    };
+    window.addEventListener('keydown', listenerHandleOpenFile);
+    return () => {
+      window.removeEventListener('keydown', listenerHandleOpenFile);
+    };
+  }, []);
 
   function handleCloseEditor(e: React.MouseEvent){
       e.stopPropagation()
       setSelectedSnippet(null)
     }
+
+  async function handleOpenFile(){
+    const resultPath = await dialog.open();
+    if (resultPath){
+      const filepath = Array.isArray(resultPath) ? resultPath[0] : resultPath;
+      const pathComponents = filepath.split("\\");
+      const filename = pathComponents[pathComponents.length - 1];
+      const fileDirectory = pathComponents.slice(0, -1).join("\\");
+      const snippetCode = await readTextFile(filepath)
+      setSelectedSnippet({name : filename, code: snippetCode, dir: fileDirectory})
+    }
+  }
   
 
   return (
     < >
      { selectedSnippet  ? 
       ( <>
+      <div>
+        <div className='absolute text-sm z-10 top-2 right-5 h-5 pr-10 w-auto flex justify-center items-center p-4 rounded-sm  bg-rose-900 ' 
+         title='file'
+        > 
+         {selectedSnippet.dir !== dir ? selectedSnippet.dir : selectedSnippet.name }
+        </div>
         <button className='absolute z-10 top-2 right-5 h-5 w-5 flex justify-center items-center p-4 rounded-sm  bg-[#BE3144] hover:bg-[#F05941]' 
          title='Ctrl+W'
          onClick={handleCloseEditor}
         > 
           &#10005;
         </button>
+      </div>
         <EditorVs language={languages[selectedSnippet.name.split(".").pop() || "javascript"] } defaultValue="" theme='vs-dark' 
               options={{fontSize: 16, minimap: {enabled: false} ,  wordWrap: "on"}}
               onChange={(value) => setText(value)}    
@@ -87,6 +119,7 @@ function Editor() {
               <li><span className='bg-[#4c0519] text-slate-400 rounded-sm px-1 border-[1px] border-slate-900'>Ctrl + Q</span> to select folder</li>
               <li><span className='bg-[#4c0519] text-slate-400 rounded-sm px-1 border-[1px] border-slate-900'>Ctrl + S</span> to toggle sidebar</li>
               <li><span className='bg-[#4c0519] text-slate-400 rounded-sm px-1 border-[1px] border-slate-900'>Ctrl + W</span> to close current editor</li>
+              <li><span className='bg-[#4c0519] text-slate-400 rounded-sm px-1 border-[1px] border-slate-900'>Ctrl + N</span> Open file </li>
               <li className='mt-2'><b>Be aware</b> when deleting files, those files are deleted completely</li>
             </ul>
 
@@ -101,8 +134,10 @@ function Editor() {
             visible={true}
           />
         <h1 className='text-slate-500'>No snippet Selected</h1>
-        <button type='button' title='Select directory (Ctrl+Q)'  
-          className='bg-[#4c0519] p-1 w-full text-slate-300  hover:bg-[#F05941] transition-colors rounded-sm '>Browse folder <span className='pl-1'>&#128447;</span> </button>
+        <button type='button' title='Open file (Ctrl+N)'  
+          className='bg-[#4c0519] p-1 w-full text-slate-300  hover:bg-[#F05941] transition-colors rounded-sm '
+          onClick={handleOpenFile}
+          >Open file <span className='pl-1'>&#128447;</span> </button>
       </div>
       ) 
      }

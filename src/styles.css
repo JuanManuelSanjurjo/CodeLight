@@ -4,7 +4,7 @@
 
 :root{
   --vscode-editor-background: #16071b;
-  
+  background-color: #16071b;
 }
 .monaco-editor, .monaco-editor .margin{
   background-color: var(--vscode-editor-background) !important; 
@@ -31,9 +31,11 @@
 .editor *, .editor::after, .editor::before{
   /* background-color: #16071b; */
   --vscode-editor-background: #16071b;
+  --vscode-quickInput-background: #0f0513;
 
-  --vscode-quickInput-background: #16071b;
   --vscode-editorHoverWidget-background: #16071b;
+  --vscode-input-background: #16071b;
+
   --vscode-listFilterWidget-background: #16071b;
   --vscode-checkbox-selectBackground: #16071b;
   --vscode-editorSuggestWidget-background: #16071b;
@@ -44,6 +46,9 @@
   --vscode-editor-inactiveSelectionBackground: rgb(116, 110, 98);
   --vscode-editor-selectionHighlightBackground: #16071b;
   --vscode-scrollbarSlider-background: #be3144;
+  --vscode-checkbox-selectBackground: #16071b;
+  --vscode-listFilterWidget-background: #16071b;
+  --vscode-editorWidget-background: #16071b;
 
 }
 
@@ -107,10 +112,10 @@
     --vscode-editor-foreground: #d4d4d4;
     --vscode-editorStickyScroll-background: #1e1e1e;
     --vscode-editorStickyScrollHover-background: #2a2d2e;
-    --vscode-editorWidget-background: #252526;
+    --vscode-editorWidget-background: #16071b;
     --vscode-editorWidget-foreground: #cccccc;
     --vscode-editorWidget-border: #454545;
-    --vscode-quickInput-background: #252526;
+    --vscode-quickInput-background: #16071b;
     --vscode-quickInput-foreground: #cccccc;
     --vscode-quickInputTitle-background: rgba(255, 255, 255, 0.1);
     --vscode-pickerGroup-foreground: #3794ff;
@@ -128,7 +133,7 @@
     --vscode-searchEditor-findMatchBackground: rgba(234, 92, 0, 0.22);
     --vscode-search-resultsInfoForeground: rgba(204, 204, 204, 0.65);
     --vscode-editor-hoverHighlightBackground: rgba(38, 79, 120, 0.25);
-    --vscode-editorHoverWidget-background: #252526;
+    --vscode-editorHoverWidget-background: #16071b;
     --vscode-editorHoverWidget-foreground: #cccccc;
     --vscode-editorHoverWidget-border: #454545;
     --vscode-editorHoverWidget-statusBarBackground: #2c2c2d;
@@ -160,7 +165,7 @@
     --vscode-list-invalidItemForeground: #b89500;
     --vscode-list-errorForeground: #f88070;
     --vscode-list-warningForeground: #cca700;
-    --vscode-listFilterWidget-background: #252526;
+    --vscode-listFilterWidget-background: #16071b;
     --vscode-listFilterWidget-outline: rgba(0, 0, 0, 0);
     --vscode-listFilterWidget-noMatchesOutline: #be1100;
     --vscode-listFilterWidget-shadow: rgba(0, 0, 0, 0.36);
@@ -171,7 +176,7 @@
     --vscode-tree-tableOddRowsBackground: rgba(204, 204, 204, 0.04);
     --vscode-list-deemphasizedForeground: #8c8c8c;
     --vscode-checkbox-background: #3c3c3c;
-    --vscode-checkbox-selectBackground: #252526;
+    --vscode-checkbox-selectBackground: #16071b;
     --vscode-checkbox-foreground: #f0f0f0;
     --vscode-checkbox-border: #3c3c3c;
     --vscode-checkbox-selectBorder: #c5c5c5;
@@ -190,7 +195,7 @@
     --vscode-breadcrumb-background: #1e1e1e;
     --vscode-breadcrumb-focusForeground: #e0e0e0;
     --vscode-breadcrumb-activeSelectionForeground: #e0e0e0;
-    --vscode-breadcrumbPicker-background: #252526;
+    --vscode-breadcrumbPicker-background: #16071b;
     --vscode-merge-currentHeaderBackground: rgba(64, 200, 174, 0.5);
     --vscode-merge-currentContentBackground: rgba(64, 200, 174, 0.2);
     --vscode-merge-incomingHeaderBackground: rgba(64, 166, 255, 0.5);
@@ -324,10 +329,10 @@
     --vscode-editorOverviewRuler-wordHighlightForeground: rgba(160, 160, 160, 0.8);
     --vscode-editorOverviewRuler-wordHighlightStrongForeground: rgba(192, 160, 192, 0.8);
     --vscode-editorOverviewRuler-wordHighlightTextForeground: rgba(160, 160, 160, 0.8);
-    --vscode-peekViewTitle-background: #252526;
+    --vscode-peekViewTitle-background: #16071b;
     --vscode-peekViewTitleLabel-foreground: #ffffff;
     --vscode-peekViewTitleDescription-foreground: rgba(204, 204, 204, 0.7);
-    --vscode-peekViewResult-background: #252526;
+    --vscode-peekViewResult-background: #16071b;
     --vscode-peekView-border: #3794ff;
     --vscode-peekViewResult-lineForeground: #bbbbbb;
     --vscode-peekViewResult-fileForeground: #ffffff;
@@ -346,7 +351,7 @@
     --vscode-editorMarkerNavigationInfo-headerBackground: rgba(55, 148, 255, 0.1);
     --vscode-editorMarkerNavigation-background: #1e1e1e;
     --vscode-editorHoverWidget-highlightForeground: #2aaaff;
-    --vscode-editorSuggestWidget-background: #252526;
+    --vscode-editorSuggestWidget-background: #16071b;
     --vscode-editorSuggestWidget-border: #454545;
     --vscode-editorSuggestWidget-foreground: #d4d4d4;
     --vscode-editorSuggestWidget-selectedForeground: #ffffff;

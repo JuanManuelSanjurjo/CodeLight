@@ -9,9 +9,8 @@ const directory = useConfigStore(state => state.dir)
         <h1 className='pl-2 font-semibold leading-[30px] text-slate-200 flex gap-2 h-[30px]'>
             <img src="/icon.ico" className='flex justify-center self-center h-6' />
             Playcode  <span className='text-[#F05941]'>&#10100; &#10101;</span> 
-            {/* &#60;  &#8725; &#62; */}
             </h1>
-        <h3 className="text-sm flex items-center text-slate-400">{directory}</h3>
+        <h3 className="text-[12px] flex items-center text-slate-400 invisible sm:visible"><span className='text-slate-300 px-3 mx-2 bg-rose-900 rounded-sm'>Current folder: </span>{ directory}</h3>
 
         <div className='flex '>
             <div className="group font-bold text-[12px] inline-flex   justify-center items-center w-[30px] h-[30px] hover:bg-rose-900 transition-colors" id="titlebar-minimize" >

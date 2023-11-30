@@ -89,7 +89,7 @@ function Form({language, setLanguage, sideBar, setSidebar}: Props) {
           onChange={(e)=> setSnippetName(e.target.value) }
           value={snippetName}
         />
-        <select name="language" className=' bg-[#4c0519] border-[#4c0519] border-t-[1px] p-1 pl-4  text-slate-300 focus:outline-none rounded-e-sm ' onChange={(e)=> setLanguage(e.target.value)}>
+        <select name="language" className=' bg-[#4c0519] border-[#4c0519] border-t-[1px] p-1 pl-4 w-full text-slate-300 focus:outline-none rounded-e-sm ' onChange={(e)=> setLanguage(e.target.value)}>
             <option value="" disabled>Sel. languaje</option>
             <option value="js">javascript</option>
             <option value="ty">typescipt</option>
