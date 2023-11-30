@@ -6,8 +6,6 @@ import { join } from '@tauri-apps/api/path';
 import { useConfigStore } from '../store/configStore';
 import { Triangle } from  'react-loader-spinner'
 
-
-
 export const languages: { [key: string]: string }= {
   js : "javascript",
   ty: "typescript",
@@ -71,7 +69,7 @@ function Editor() {
         > 
           &#10005;
         </button>
-        <EditorVs  language={languages[selectedSnippet.name.split(".").pop() || "javascript"] } defaultValue="" theme='vs-dark' 
+        <EditorVs language={languages[selectedSnippet.name.split(".").pop() || "javascript"] } defaultValue="" theme='vs-dark' 
               options={{fontSize: 16, minimap: {enabled: false} ,  wordWrap: "on"}}
               onChange={(value) => setText(value)}    
               value={selectedSnippet?.code ?? ""}
@@ -81,8 +79,9 @@ function Editor() {
         )
      : 
       (
-      <div className='flex flex-col gap-8 mt-5 justify-center items-center'>
-          <div className='group absolute top-10 py-5 px-10 w-3/6 hover:w-4/6 hover:bg-[#2a0d33] rounded-lg border-2 border-[#2a0d33] text-slate-500 text-sm transition-all leading-6'>
+      <div className='flex flex-col gap-8 mt-5 justify-center items-center '>
+          <div className='group hidden absolute top-10 py-5 px-10 w-3/6 hover:w-4/6 hover:bg-[#2a0d33] rounded-lg border-2 border-[#2a0d33] text-slate-500 text-sm transition-all leading-6
+         lg:block'>
             <h1><b># Quick start:</b></h1>
             <ul className='px-4'>
               <li><span className='bg-[#4c0519] text-slate-400 rounded-sm px-1 border-[1px] border-slate-900'>Ctrl + Q</span> to select folder</li>

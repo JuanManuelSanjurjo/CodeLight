@@ -61,7 +61,7 @@ function Form({language, setLanguage, sideBar, setSidebar}: Props) {
 
   return (
     <>
-    <div className='flex justify-center text-sm items-center w-full m-auto p-2 pb-0'>
+    <div className='flex justify-center text-sm items-center w-full m-auto p-2 pb-0 flex-col md:flex-row'>
       <button type='button' title='Select directory (Ctrl+Q)' onClick={handleSetDirectory} 
         className='bg-[#4c0519]  w-full text-slate-00  hover:bg-[#F05941] transition-colors rounded-s-sm '>Folder: <span className='pl-1'>&#128447;</span></button>
       <button type='button' title='Collapse sidebar (toggle Ctrl+S)' onClick={collapseSidebar} 
@@ -83,7 +83,7 @@ function Form({language, setLanguage, sideBar, setSidebar}: Props) {
       toast.success("Snippet saved", { duration: 2000, position:"bottom-center", style: {background: "#181818", color: "#fff"} })
     }}
     >
-      <div className='group bg-[#16071b] text-sm p-2 mb-[2px] flex justify-center items-center rounded-sm '>
+      <div className='group bg-[#16071b] text-sm p-2 mb-[2px] flex justify-center items-center rounded-sm flex-col md:flex-row'>
         <input type="text" placeholder='Add snippet' 
           className='bg-[#2a0d33] p-1 pl-4 w-full outline-none focus:outline-none hover:opacity-75 focus:opacity-75 rounded-s-sm ' 
           onChange={(e)=> setSnippetName(e.target.value) }

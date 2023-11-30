@@ -6,6 +6,9 @@ import { useState, useEffect } from 'react'
 import TaskBar from "./components/TaskBar";
 import { useSnippetStore } from './store/snippetStore'
 
+
+
+
 const App = () => {
   const [language, setLanguage] = useState("js")
   const [sidebar, setSidebar] = useState(true)

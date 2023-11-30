@@ -23,7 +23,6 @@ function SnippetList() {
 		  }
 		  setDir(dir!)
 		  let files = await readDir(`${dir}` )
-		  // TODO filtrar por archivos que tienen la extension que soporta el programa
 		  files = files.filter( file =>  Object.keys(languages).includes(file.name!.split(".")[1])
 		  )
 
