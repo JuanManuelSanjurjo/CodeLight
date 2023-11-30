@@ -21,6 +21,7 @@ const directory = useConfigStore(state => state.dir)
                     <h1><b>Tips</b></h1>
                     <ul className='px-4'>
                     <li>Ctrl + Q to select folder</li>
+                    <li>Ctrl + E to open file</li>
                     <li>Ctrl + S to toggle sidebar</li>
                     <li>Ctrl + W to close current editor</li>
                     </ul>

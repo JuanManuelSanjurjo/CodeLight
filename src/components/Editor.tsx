@@ -1,4 +1,4 @@
-import  { useEffect, useState } from 'react'
+import  { useEffect, useState, useRef } from 'react'
 import {Editor as EditorVs} from '@monaco-editor/react';
 import { useSnippetStore } from '../store/snippetStore'
 import { readTextFile, writeTextFile } from '@tauri-apps/api/fs';
@@ -43,9 +43,7 @@ function Editor() {
     if(!selectedSnippet) return
 
     const autoSave = setTimeout( async()=>{
-      console.log(selectedSnippet.dir)
       const filepath = await join(`${selectedSnippet.dir}/${selectedSnippet.name}`)
-      console.log(filepath)
       if(text){
         await writeTextFile(filepath, text)  
       }
@@ -56,10 +54,11 @@ function Editor() {
 
   useEffect(() => {
     const listenerHandleOpenFile = (event: KeyboardEvent) => {
-      if (event.code === 'KeyN' && event.ctrlKey) {
+      if (event.code === 'KeyE' && event.ctrlKey) {
         handleOpenFile()
       }
     };
+  
     window.addEventListener('keydown', listenerHandleOpenFile);
     return () => {
       window.removeEventListener('keydown', listenerHandleOpenFile);
@@ -88,7 +87,7 @@ function Editor() {
     < >
      { selectedSnippet  ? 
       ( <>
-      <div>
+      <div autoFocus>
         <div className='absolute text-sm z-10 top-2 right-5 h-5 pr-10 w-auto flex justify-center items-center p-4 rounded-sm  bg-rose-900 ' 
          title='file'
         > 
@@ -116,10 +115,12 @@ function Editor() {
          lg:block'>
             <h1><b># Quick start:</b></h1>
             <ul className='px-4'>
-              <li><span className='bg-[#4c0519] text-slate-400 rounded-sm px-1 border-[1px] border-slate-900'>Ctrl + Q</span> to select folder</li>
-              <li><span className='bg-[#4c0519] text-slate-400 rounded-sm px-1 border-[1px] border-slate-900'>Ctrl + S</span> to toggle sidebar</li>
-              <li><span className='bg-[#4c0519] text-slate-400 rounded-sm px-1 border-[1px] border-slate-900'>Ctrl + W</span> to close current editor</li>
-              <li><span className='bg-[#4c0519] text-slate-400 rounded-sm px-1 border-[1px] border-slate-900'>Ctrl + N</span> Open file </li>
+              <li><span className='bg-[#4c0519] text-slate-400 rounded-sm px-1 leading-7 border-2 border-[#2a0d33]'>Ctrl + Q</span> to select folder</li>
+              <li><span className='bg-[#4c0519] text-slate-400 rounded-sm px-1 leading-7 border-2 border-[#2a0d33]'>Ctrl + E</span> to open file </li>
+              <li><span className='bg-[#4c0519] text-slate-400 rounded-sm px-1 leading-7 border-2 border-[#2a0d33]'>Ctrl + S</span> to toggle sidebar</li>
+              <li><span className='bg-[#4c0519] text-slate-400 rounded-sm px-1 leading-7 border-2 border-[#2a0d33]'>Ctrl + W</span> to close current editor</li>
+              <li><span className='bg-[#4c0519] text-slate-400 rounded-sm px-1 leading-7 border-2 border-[#2a0d33]'>Ctrl + Q <b className='px-2'>&</b> Ctrl + E</span> to <u>set folder</u> and then search <u>files</u>  </li>
+              <li><span className='bg-[#4c0519] text-slate-400 rounded-sm px-1 leading-7 border-2 border-[#2a0d33]'>..</span> on file explorer goes to previous level in tree</li>
               <li className='mt-2'><b>Be aware</b> when deleting files, those files are deleted completely</li>
             </ul>
 
@@ -130,11 +131,10 @@ function Editor() {
             color="#F05941"
             ariaLabel="triangle-loading"
             wrapperStyle={{}}
-            // wrapperClassName=""
             visible={true}
           />
-        <h1 className='text-slate-500'>No snippet Selected</h1>
-        <button type='button' title='Open file (Ctrl+N)'  
+        <h1 className='text-slate-500'>No file Selected</h1>
+        <button type='button' title='Open file (Ctrl+E)'  
           className='bg-[#4c0519] p-1 w-full text-slate-300  hover:bg-[#F05941] transition-colors rounded-sm '
           onClick={handleOpenFile}
           >Open file <span className='pl-1'>&#128447;</span> </button>

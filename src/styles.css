@@ -35,6 +35,13 @@
 
   --vscode-editorHoverWidget-background: #16071b;
   --vscode-input-background: #16071b;
+  --vscode-quickInputTitle-background: #16071b;
+
+
+  --vscode-editor-findMatchBackground: #16071b;
+  --vscode-editor-findMatchHighlightBackground: rgba(234, 92, 0, 0.33);
+  --vscode-editor-findRangeHighlightBackground: #16071b;
+  --vscode-searchEditor-findMatchBackground: #16071b;
 
   --vscode-listFilterWidget-background: #16071b;
   --vscode-checkbox-selectBackground: #16071b;
