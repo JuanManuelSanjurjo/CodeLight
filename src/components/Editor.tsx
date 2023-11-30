@@ -8,7 +8,7 @@ import { Triangle } from  'react-loader-spinner'
 
 
 
-const languages: { [key: string]: string }= {
+export const languages: { [key: string]: string }= {
   js : "javascript",
   ty: "typescript",
   c: "c",
@@ -85,9 +85,9 @@ function Editor() {
           <div className='group absolute top-10 py-5 px-10 w-3/6 hover:w-4/6 hover:bg-[#2a0d33] rounded-lg border-2 border-[#2a0d33] text-slate-500 text-sm transition-all leading-6'>
             <h1><b># Quick start:</b></h1>
             <ul className='px-4'>
-              <li><b>Ctrl + Q</b> to select folder</li>
-              <li><b>Ctrl + S</b> to toggle sidebar</li>
-              <li><b>Ctrl + W</b> to close current editor</li>
+              <li><span className='bg-[#4c0519] text-slate-400 rounded-sm px-1 border-[1px] border-slate-900'>Ctrl + Q</span> to select folder</li>
+              <li><span className='bg-[#4c0519] text-slate-400 rounded-sm px-1 border-[1px] border-slate-900'>Ctrl + S</span> to toggle sidebar</li>
+              <li><span className='bg-[#4c0519] text-slate-400 rounded-sm px-1 border-[1px] border-slate-900'>Ctrl + W</span> to close current editor</li>
               <li className='mt-2'><b>Be aware</b> when deleting files, those files are deleted completely</li>
             </ul>
 

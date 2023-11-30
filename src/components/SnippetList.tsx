@@ -4,6 +4,7 @@ import { desktopDir} from '@tauri-apps/api/path'
 import { useSnippetStore } from '../store/snippetStore'
 import { useConfigStore } from '../store/configStore'
 import SnippetItem from './SnippetItem'
+import { languages } from './Editor'
 
 function SnippetList() {
 	const setSnippetsNames = useSnippetStore(state => state.setSnippetsNames)
@@ -21,8 +22,11 @@ function SnippetList() {
 			dir = await desktopDir();
 		  }
 		  setDir(dir!)
-		  const files = await readDir(`${dir}` )
+		  let files = await readDir(`${dir}` )
 		  // TODO filtrar por archivos que tienen la extension que soporta el programa
+		  files = files.filter( file =>  Object.keys(languages).includes(file.name!.split(".")[1])
+		  )
+
 		  setFiles(files)
 		  const filenames = files.map(file => file.name!)
 		  setSnippetsNames(filenames)
