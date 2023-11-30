@@ -4,8 +4,11 @@ import { useSnippetStore } from '../store/snippetStore'
 import { writeTextFile } from '@tauri-apps/api/fs';
 import { join } from '@tauri-apps/api/path';
 import { useConfigStore } from '../store/configStore';
+import { Triangle } from  'react-loader-spinner'
 
 
+// TODO cerrar el edito desde el mismo editor
+// TODO tips e instrucciones en la pagina de descanso con un div desplegable animado
 
 const languages: { [key: string]: string }= {
   js : "javascript",
@@ -43,7 +46,9 @@ function Editor() {
 
     const autoSave = setTimeout( async()=>{
       const filepath = await join(dir, `${selectedSnippet.name}`)
-      await writeTextFile(filepath, text ?? "")  
+      if(text){
+        await writeTextFile(filepath, text)  
+      }
       
     }, 500)
 
@@ -60,7 +65,23 @@ function Editor() {
             className='editor'
         />)
      : 
-      (<h1>No snippet Selected</h1>) 
+      (
+      <div className='flex flex-col gap-10 justify-center items-center'>
+        <Triangle
+          height="100"
+          width="100"
+          color="#F05941"
+          ariaLabel="triangle-loading"
+          wrapperStyle={{}}
+          // wrapperClassName=""
+          visible={true}
+        />
+      <h1 className='text-slate-400'>No snippet Selected</h1>
+      <button type='button' title='Select directory (Ctrl+Q)'  
+        className='bg-[#4c0519]  w-full text-slate-300  hover:bg-[#F05941] transition-colors rounded-md '>Browse folder <span className='pl-1'>&#128447;</span> </button>
+        {/* TODO que este boton lleve al buscador de carpetas */}
+      </div>
+      ) 
      }
      </>
   )

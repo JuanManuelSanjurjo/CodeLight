@@ -34,6 +34,18 @@ function Form({language, setLanguage, sideBar, setSidebar}: Props) {
     })();
   }, []);
 
+  useEffect(() => {
+      const handleKeyDown = (event: KeyboardEvent) => {
+        if (event.code === 'KeyQ' && event.ctrlKey) {
+          handleSetDirectory()
+        }
+      };
+      window.addEventListener('keydown', handleKeyDown);
+      return () => {
+        window.removeEventListener('keydown', handleKeyDown);
+    };
+    }, []);
+
 
   async function handleSetDirectory(){
     const result = await dialog.open({ directory: true });
@@ -50,34 +62,35 @@ function Form({language, setLanguage, sideBar, setSidebar}: Props) {
   return (
     <>
     <div className='flex justify-center items-center w-full m-auto p-2 pb-0'>
-      <button type='button' onClick={handleSetDirectory} className='bg-[#4c0519] w-full text-slate-300  hover:bg-[#F05941] transition-colors '>Folder: </button>
-      <button type='button' onClick={collapseSidebar} className='bg-[#4c0519] outline outline-[#f0584196] outline-1 outline-offset-[-1px]  w-full text-slate-200  hover:bg-[#F05941] transition-colors '>&#8644;</button>
+      <button type='button' title='Select directory (Ctrl+Q)' onClick={handleSetDirectory} 
+        className='bg-[#4c0519]  w-full text-slate-00  hover:bg-[#F05941] transition-colors rounded-s-md '>Folder: <span className='pl-1'>&#128447;</span></button>
+      <button type='button' title='Collapse sidebar (toggle Ctrl+W)' onClick={collapseSidebar} 
+        className='bg-[#4c0519] outline outline-[#f0584196] outline-1 outline-offset-[-1px] w-full text-slate-200 hover:bg-[#F05941] transition-colors rounded-e-md'>&#8644;</button>
     </div>
     <form
     onSubmit={ async (e) => {
       e.preventDefault()
 
       if (snippetNames.includes(`${snippetName}.${language}`) || !snippetNames || snippetName === "") {
-        toast.error("Snippet can't be empty or have same name as another file", {duration: 4000, position: "bottom-right",style: {background: "#181818", color: "#fff"},});
+        toast.error("Snippet can't be empty or have same name as another file", {duration: 4000, position: "bottom-center",style: {background: "#181818", color: "#fff"},});
         return;
       }
-
       const filepath = await join(directory, `${snippetName}.${language}`)
       await writeTextFile(filepath, ``)  
       addSnippetName(`${snippetName}.${language}`)
       setSnippetName("")
 
-      toast.success("Snippet saved", { duration: 2000, position:"bottom-right", style: {background: "#181818", color: "#fff"} })
+      toast.success("Snippet saved", { duration: 2000, position:"bottom-center", style: {background: "#181818", color: "#fff"} })
     }}
     >
-      <div className='bg-[#16071b] p-2 mb-[2px] flex justify-center items-center  rounded-sm'>
+      <div className='group bg-[#16071b] p-2 mb-[2px] flex justify-center items-center rounded-sm '>
         <input type="text" placeholder='Add snippet' 
-          className='bg-[#2a0d33]  p-2 w-full  outline-none focus:outline-none hover:opacity-75 focus:opacity-75' 
+          className='bg-[#2a0d33] p-1 pl-4 w-full outline-none focus:outline-none hover:opacity-75 focus:opacity-75 rounded-s-md ' 
           onChange={(e)=> setSnippetName(e.target.value) }
           value={snippetName}
         />
-        <select name="language" className='bg-[#4c0519] border-[#4c0519] border-t-[1px] p-2 text-slate-300 focus:outline-none' onChange={(e)=> setLanguage(e.target.value)}>
-            <option value="" disabled>Select languaje</option>
+        <select name="language" className=' bg-[#4c0519] border-[#4c0519] border-t-[1px] p-1 pl-4  text-slate-300 focus:outline-none rounded-e-md ' onChange={(e)=> setLanguage(e.target.value)}>
+            <option value="" disabled>Sel. languaje</option>
             <option value="js">javascript</option>
             <option value="ty">typescipt</option>
             <option value="c">c</option>
@@ -100,7 +113,6 @@ function Form({language, setLanguage, sideBar, setSidebar}: Props) {
             <option value="md">markdown</option>
             <option value="txt">plaintext</option>
         </select>
-
       </div>
   
     </form>

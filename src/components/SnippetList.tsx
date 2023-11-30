@@ -7,11 +7,11 @@ import SnippetItem from './SnippetItem'
 
 function SnippetList() {
 	const setSnippetsNames = useSnippetStore(state => state.setSnippetsNames)
-	// const snippetNames = useSnippetStore(state => state.snippetsNames)
 	const directory = useConfigStore(state => state.dir)
 	const setDir = useConfigStore(state => state.setDir)
 	const [files, setFiles] = useState<FileEntry[]>([])
 
+ //TODO usar 'react-treebeard' para arbol de directorios
 
 	useEffect(()=> {
 		async function loadFiles(){
@@ -22,6 +22,7 @@ function SnippetList() {
 		  }
 		  setDir(dir!)
 		  const files = await readDir(`${dir}` )
+		  // TODO filtrar por archivos que tienen la extension que soporta el programa
 		  setFiles(files)
 		  const filenames = files.map(file => file.name!)
 		  setSnippetsNames(filenames)

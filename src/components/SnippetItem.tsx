@@ -12,6 +12,8 @@ interface Props {
 }
 
 
+// TODO keydown event para cerrar un snippet
+
 function SnippetItem({snippetName}: Props) {
   const setSelectedSnippet = useSnippetStore(state => state.setSelectedSnippet)
   const selectedSnippet = useSnippetStore(store => store.selectedSnippet)
@@ -19,13 +21,13 @@ function SnippetItem({snippetName}: Props) {
 
 
   async function handleDelete(snippetName: string) {
-    const confirm = await window.confirm("Are you sure you want to delete the file from de disk?")
+    const confirm = await window.confirm("This will completely remove the file from de disk\nAre you sure you want to proceed?")
     if(!confirm) return
 
     // const extension =  file.path.split(".").pop()
     const filepath = await join(dir, `${snippetName}` )
     await removeFile(filepath)
-    toast.error("Snippet deleted", { duration: 2000, position:"bottom-right", style: {background: "#181818", color: "#fff"} })
+    toast.error("Snippet deleted", { duration: 2000, position:"bottom-center", style: {background: "#181818", color: "#fff"} })
 
   }
 
@@ -41,8 +43,10 @@ function SnippetItem({snippetName}: Props) {
     
     > <h1>{snippetName.split(".")[0]} <span className='text-[#F05941]'>{snippetName.split(".")[1]}</span></h1>
     { snippetName === selectedSnippet?.name &&
-      <div className='flex gap-2 justify-center items-center text-slate-700 hover:scale-110 transition'>
+      <div className='flex gap-2 justify-center items-center text-[#16071b]   transition'>
         <FiTrash 
+          title="Delete"
+          className="hover:scale-125 hover:text-[#F05941] transition"
           onClick={ (e: React.MouseEvent) => {
           e.stopPropagation()
           handleDelete(snippetName)
@@ -51,6 +55,8 @@ function SnippetItem({snippetName}: Props) {
         }}
         />
         <FiX
+          title="Close"
+          className="hover:scale-125 hover:text-[#F05941] transition"
           onClick={(e: React.MouseEvent) => {
             e.stopPropagation()
             setSelectedSnippet(null)
