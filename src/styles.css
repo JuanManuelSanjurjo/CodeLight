@@ -36,6 +36,7 @@
   --vscode-editorHoverWidget-background: #16071b;
   --vscode-input-background: #16071b;
   --vscode-quickInputTitle-background: #16071b;
+    --vscode-quickInputTitle-background: rgba(255, 255, 255, 0.1);
 
 
   --vscode-editor-findMatchBackground: #16071b;

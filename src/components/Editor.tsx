@@ -110,8 +110,8 @@ function Editor() {
         )
      : 
       (
-      <div className='flex flex-col gap-8 mt-5 justify-center items-center '>
-          <div className='group hidden absolute top-10 py-5 px-10 w-3/6 hover:w-4/6 hover:bg-[#2a0d33] rounded-lg border-2 border-[#2a0d33] text-slate-500 text-sm transition-all leading-6
+      <div className='flex flex-col h-full gap-14 w-full justify-center items-center '>
+          <div className='group hidden -mt-32 py-5 px-10 w-4/6 hover:w-5/6 hover:bg-[#2a0d33] rounded-lg border-2 border-[#2a0d33] text-slate-500 text-sm transition-all leading-6
          lg:block'>
             <h1><b># Quick start:</b></h1>
             <ul className='px-4'>
@@ -135,7 +135,7 @@ function Editor() {
           />
         <h1 className='text-slate-500'>No file Selected</h1>
         <button type='button' title='Open file (Ctrl+E)'  
-          className='bg-[#4c0519] p-1 w-full text-slate-300  hover:bg-[#F05941] transition-colors rounded-sm '
+          className='bg-[#4c0519] p-2 w-1/5 min-w-fit text-slate-300  hover:bg-[#F05941] transition-colors rounded-sm '
           onClick={handleOpenFile}
           >Open file <span className='pl-1'>&#128447;</span> </button>
       </div>
