@@ -25,6 +25,4 @@
 .editor{
     margin-top: 2px;
     height: calc(100% - 2px);
-    /* overflow-y: auto; */
-
 }

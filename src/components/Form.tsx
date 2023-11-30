@@ -61,11 +61,11 @@ function Form({language, setLanguage, sideBar, setSidebar}: Props) {
 
   return (
     <>
-    <div className='flex justify-center items-center w-full m-auto p-2 pb-0'>
+    <div className='flex justify-center text-sm items-center w-full m-auto p-2 pb-0'>
       <button type='button' title='Select directory (Ctrl+Q)' onClick={handleSetDirectory} 
-        className='bg-[#4c0519]  w-full text-slate-00  hover:bg-[#F05941] transition-colors rounded-s-md '>Folder: <span className='pl-1'>&#128447;</span></button>
-      <button type='button' title='Collapse sidebar (toggle Ctrl+W)' onClick={collapseSidebar} 
-        className='bg-[#4c0519] outline outline-[#f0584196] outline-1 outline-offset-[-1px] w-full text-slate-200 hover:bg-[#F05941] transition-colors rounded-e-md'>&#8644;</button>
+        className='bg-[#4c0519]  w-full text-slate-00  hover:bg-[#F05941] transition-colors rounded-s-sm '>Folder: <span className='pl-1'>&#128447;</span></button>
+      <button type='button' title='Collapse sidebar (toggle Ctrl+S)' onClick={collapseSidebar} 
+        className='bg-[#4c0519] outline outline-[#f0584196] outline-1 outline-offset-[-1px] w-full text-slate-200 hover:bg-[#F05941] transition-colors rounded-e-sm'>&#8644;</button>
     </div>
     <form
     onSubmit={ async (e) => {
@@ -83,13 +83,13 @@ function Form({language, setLanguage, sideBar, setSidebar}: Props) {
       toast.success("Snippet saved", { duration: 2000, position:"bottom-center", style: {background: "#181818", color: "#fff"} })
     }}
     >
-      <div className='group bg-[#16071b] p-2 mb-[2px] flex justify-center items-center rounded-sm '>
+      <div className='group bg-[#16071b] text-sm p-2 mb-[2px] flex justify-center items-center rounded-sm '>
         <input type="text" placeholder='Add snippet' 
-          className='bg-[#2a0d33] p-1 pl-4 w-full outline-none focus:outline-none hover:opacity-75 focus:opacity-75 rounded-s-md ' 
+          className='bg-[#2a0d33] p-1 pl-4 w-full outline-none focus:outline-none hover:opacity-75 focus:opacity-75 rounded-s-sm ' 
           onChange={(e)=> setSnippetName(e.target.value) }
           value={snippetName}
         />
-        <select name="language" className=' bg-[#4c0519] border-[#4c0519] border-t-[1px] p-1 pl-4  text-slate-300 focus:outline-none rounded-e-md ' onChange={(e)=> setLanguage(e.target.value)}>
+        <select name="language" className=' bg-[#4c0519] border-[#4c0519] border-t-[1px] p-1 pl-4  text-slate-300 focus:outline-none rounded-e-sm ' onChange={(e)=> setLanguage(e.target.value)}>
             <option value="" disabled>Sel. languaje</option>
             <option value="js">javascript</option>
             <option value="ty">typescipt</option>

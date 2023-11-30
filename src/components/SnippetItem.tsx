@@ -11,9 +11,6 @@ interface Props {
   file: FileEntry
 }
 
-
-// TODO keydown event para cerrar un snippet
-
 function SnippetItem({snippetName}: Props) {
   const setSelectedSnippet = useSnippetStore(state => state.setSelectedSnippet)
   const selectedSnippet = useSnippetStore(store => store.selectedSnippet)
@@ -24,18 +21,15 @@ function SnippetItem({snippetName}: Props) {
     const confirm = await window.confirm("This will completely remove the file from de disk\nAre you sure you want to proceed?")
     if(!confirm) return
 
-    // const extension =  file.path.split(".").pop()
     const filepath = await join(dir, `${snippetName}` )
     await removeFile(filepath)
     toast.error("Snippet deleted", { duration: 2000, position:"bottom-center", style: {background: "#181818", color: "#fff"} })
-
   }
 
 
   return (
     <div className={twMerge(selectedSnippet?.name === snippetName ? "bg-[#BE3144]" : "",'text-slate-300  flex justify-between py-1 px-4 hover:bg-[#4c0519] hover:cursor-pointer ')}
         onClick={ async ()=>{ 
-          // const extension =  file.path.split(".").pop()
           const filepath = await join(dir, `${snippetName}`)
           const snippetCode = await readTextFile(filepath)
           setSelectedSnippet({name : snippetName, code: snippetCode})
