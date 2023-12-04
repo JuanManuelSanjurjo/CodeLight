@@ -34,7 +34,7 @@ const App = () => {
   
 
   return (
-    <div className='bg-[#16071b] font-sans tracking-wider h-screen w-screen fixed top-7  text-orange-50  grid grid-cols-12 overflow-hidden'>
+    <div className='bg-[#16071b] font-sans tracking-wider h-screen w-screen fixed top-7  text-orange-50 grid grid-cols-12 overflow-hidden'>
       <button className={'absolute top-[2px] z-10 h-full w-4 bg-[#4c0519]  hover:bg-[#F05941] transition-colors' 
         + (sidebar ? " hidden": " block")}
         onClick={()=> setSidebar(!sidebar)}

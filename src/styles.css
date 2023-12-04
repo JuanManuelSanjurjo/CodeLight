@@ -22,9 +22,9 @@
 }
 
 .editor{
-    margin-top: 2px;
-    height: calc(100% - 2px);
-
+  margin-top: 2px;
+  height: calc(100% - 2px);
+  /* border-top: 2px solid  #2a0d33;  */
 }
 
 .editor *, .editor::after, .editor::before{
@@ -231,7 +231,6 @@
     --vscode-charts-purple: #b180d7;
     --vscode-diffEditor-move-border: rgba(139, 139, 139, 0.61);
     --vscode-diffEditor-moveActive-border: #ffa500;
-
     --vscode-symbolIcon-arrayForeground: #cccccc;
     --vscode-symbolIcon-booleanForeground: #cccccc;
     --vscode-symbolIcon-classForeground: #ee9d28;
@@ -265,7 +264,6 @@
     --vscode-symbolIcon-typeParameterForeground: #cccccc;
     --vscode-symbolIcon-unitForeground: #cccccc;
     --vscode-symbolIcon-variableForeground: #75beff;
-
     --vscode-actionBar-toggledBackground: rgba(0, 127, 212, 0.4);
     --vscode-editor-lineHighlightBorder: #282828;
     --vscode-editor-rangeHighlightBackground: rgba(255, 255, 255, 0.04);
@@ -301,7 +299,6 @@
     --vscode-editorOverviewRuler-errorForeground: rgba(255, 18, 18, 0.7);
     --vscode-editorOverviewRuler-warningForeground: #cca700;
     --vscode-editorOverviewRuler-infoForeground: #3794ff;
-    
     --vscode-editorBracketHighlight-foreground1: #ffd700;
     --vscode-editorBracketHighlight-foreground2: #da70d6;
     --vscode-editorBracketHighlight-foreground3: #179fff;
@@ -362,4 +359,5 @@
     --vscode-editorSuggestWidget-focusHighlightForeground: #2aaaff;
     --vscode-editorSuggestWidgetStatus-foreground: rgba(212, 212, 212, 0.5);
     --vscode-editor-foldBackground: rgba(38, 79, 120, 0.3);
-    --vscode-editorGutter-foldingControlForeground: #c5c5c5; */
+    --vscode-editorGutter-foldingControlForeground: #c5c5c5; 
+*/

@@ -85,8 +85,16 @@ function Editor() {
     < >
      { selectedSnippet  ? 
       ( <>
-      <div >
-        <div className='absolute text-sm z-10 top-2 right-5 h-5 pr-10 w-auto flex justify-center items-center p-4 rounded-sm  bg-rose-900 ' 
+        <EditorVs language={languages[selectedSnippet.name.split(".").pop() || "javascript"] } defaultValue="" theme='vs-dark' 
+              options={{fontSize: 16, minimap: {enabled: false} ,  wordWrap: "on" }}
+              onChange={(value) => setText(value)}    
+              value={selectedSnippet?.code ?? ""}
+              className='editor'
+              key={selectedSnippet ? selectedSnippet.name : 'empty'} 
+              // FORZA un reRender cada vez que se selecciona un nuevo archivo, por lo que el stack de undo/redo se refresca
+          />
+      <div autoFocus >
+        <div className='absolute text-sm z-10 top-2 right-5 h-5 pr-10 w-auto flex justify-center items-center p-4 rounded-sm bg-rose-900 ' 
          title='file'
         > 
          {selectedSnippet.dir !== dir ? selectedSnippet.dir : selectedSnippet.name }
@@ -98,19 +106,11 @@ function Editor() {
           &#10005;
         </button>
       </div>
-        <EditorVs language={languages[selectedSnippet.name.split(".").pop() || "javascript"] } defaultValue="" theme='vs-dark' 
-              options={{fontSize: 16, minimap: {enabled: false} ,  wordWrap: "on" }}
-              onChange={(value) => setText(value)}    
-              value={selectedSnippet?.code ?? ""}
-              className='editor'
-              key={selectedSnippet ? selectedSnippet.name : 'empty'} 
-              // FORZA un reRender cada vez que se selecciona un nuevo archivo, por lo que el stack de undo/redo se refresca
-          />
       </>
         )
      : 
       (
-      <div className='flex flex-col h-full w-full gap-8 justify-center items-center'>
+      <div className='flex flex-col h-full w-full gap-4 justify-center items-center lg:gap-14'>
           <div className='group hidden -mt-32 py-5 px-10 w-4/6 hover:w-5/6 hover:bg-[#2a0d33] rounded-lg border-2 border-[#2a0d33] text-slate-500 text-sm transition-all leading-5
          lg:block'>
             <h1><b># Quick start:</b></h1>
@@ -125,19 +125,24 @@ function Editor() {
             </ul>
             
           </div>
-          <Triangle
-            height="80"
-            width="80"
-            color="#F05941"
-            ariaLabel="triangle-loading"
-            wrapperStyle={{}}
-            visible={true}
-          />
-        <h1 className='text-slate-500'>No file Selected</h1>
-        <button type='button' title='Open file (Ctrl+E)'  
-          className='bg-[#4c0519] p-2 w-1/5 min-w-fit text-slate-300  hover:bg-[#F05941] transition-colors rounded-sm '
-          onClick={handleOpenFile}
-          >Open file <span className='pl-1'>&#128447;</span> </button>
+          <div >
+            <Triangle
+              height="80"
+              width="80"
+              color="#F05941"
+              ariaLabel="triangle-loading"
+              wrapperStyle={{}}
+              visible={true}
+            />
+          </div>
+          <div className='flex flex-col gap-4 justify-center items-center w-full'>
+            <h1 className='text-slate-500'>No file Selected</h1>
+              <button type='button' title='Open file (Ctrl+E)'  
+                className='bg-[#4c0519] p-2 w-1/5 min-w-fit text-slate-300  hover:bg-[#F05941] transition-colors rounded-sm '
+                onClick={handleOpenFile}
+              >Open file <span className='pl-1'>&#128447;</span> 
+              </button>
+          </div>
       </div>
       ) 
      }
