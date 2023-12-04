@@ -55,7 +55,7 @@
     "bundle": {
       "active": true,
       "targets": "all",
-      "identifier": "com.snippet-hoarder.dev",
+      "identifier": "com.playcode.dev",
       "icon": [
         "icons/32x32.png",
         "icons/128x128.png",
