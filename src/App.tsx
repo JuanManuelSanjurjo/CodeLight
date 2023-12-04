@@ -7,8 +7,6 @@ import TaskBar from "./components/TaskBar";
 import { useSnippetStore } from './store/snippetStore'
 
 
-
-
 const App = () => {
   const [language, setLanguage] = useState("js")
   const [sidebar, setSidebar] = useState(true)
@@ -43,10 +41,10 @@ const App = () => {
         >&#8644;
       </button>
       <TaskBar />
-      <div className={"h-full border-r-2 border-[#2a0d33]  overflow-auto overflow-x-hidden " + (sidebar ? "col-span-3" : "hidden")}>
+      <div className={" h-full border-r-2 border-[#2a0d33] overflow-auto overflow-x-hidden " + (sidebar ? "col-span-3" : "hidden")}>
         <Form language={language} setLanguage={setLanguage} sideBar={sidebar} setSidebar={setSidebar}/>
         <SnippetList />
-      </div>
+    </div>
       <div className={`bg-[#16071b] flex justify-center items-center ` + (sidebar ? "col-span-9" : "col-span-12")} >
         <Editor />
       </div>
@@ -58,5 +56,8 @@ const App = () => {
     </div>
   )
 }
+
+
+
 
 export default App

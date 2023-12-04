@@ -6,7 +6,7 @@
     "distDir": "../dist"
   },
   "package": {
-    "productName": "Snippet playground",
+    "productName": "Playcode",
     "version": "0.0.0"
   },
   "tauri": {

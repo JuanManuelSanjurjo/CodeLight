@@ -21,7 +21,6 @@
   right: 0;
 }
 
-
 .editor{
     margin-top: 2px;
     height: calc(100% - 2px);
@@ -60,11 +59,6 @@
 
 }
 
-
-.editor::selection {
-
-  background: aliceblue !important;
-}
 
 /* 
     --vscode-foreground: #cccccc;

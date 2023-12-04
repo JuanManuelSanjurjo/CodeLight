@@ -28,16 +28,18 @@ function SnippetItem({snippetName}: Props) {
 
 
   return (
-    <div className={twMerge(selectedSnippet?.name === snippetName ? "bg-[#BE3144] " : "",'text-slate-300  flex justify-between py-1 px-4 hover:bg-[#4c0519] hover:cursor-pointer hover:pl-10 transition-all  ')}
+    <div className={twMerge(selectedSnippet?.name === snippetName ?  "bg-[#BE3144] " : "",'text-slate-300  flex justify-between py-1 px-4 hover:bg-[#4c0519] hover:cursor-pointer hover:pl-10 transition-all  ')}
+        title={snippetName}    
         onClick={ async ()=>{ 
           const filepath = await join(dir, `${snippetName}`)
           const pathComponents = filepath.split("\\");
           const fileDirectory = pathComponents.slice(0, -1).join("\\");
-          const snippetCode = await readTextFile(filepath)
+          const snippetCode = await readTextFile(filepath) 
+          setSelectedSnippet(null)
           setSelectedSnippet({name : snippetName, code: snippetCode, dir:fileDirectory })
         }}
-    
-    > <h1>{snippetName.split(".")[0]} <span className='text-[#F05941] '>{snippetName.split(".")[1]}</span></h1>
+    > 
+    <h1>{snippetName.split(".")[0]} <span className='text-[#F05941] '>{snippetName.split(".")[1]}</span></h1>
     { snippetName === selectedSnippet?.name &&
       <div className='flex gap-2 justify-center items-center text-[#16071b]   transition'>
         <FiTrash 
