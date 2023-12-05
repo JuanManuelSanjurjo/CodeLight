@@ -8,9 +8,9 @@ based on the [Monaco Editor](https://microsoft.github.io/monaco-editor/)
 -Single page editor
 
 
-![App Screenshot]("./public/Screenshot_1.jpg")
-![App Screenshot]("./public/Screenshot_2.jpg")
-![App Screenshot]("./public/Screenshot_3.jpg")
+![App Screenshot](https://github.com/JuanManuelSanjurjo/CodeLight/blob/master/public/Screenshot_1.jpg)
+![App Screenshot](https://github.com/JuanManuelSanjurjo/CodeLight/blob/master/public/Screenshot_2.jpg)
+![App Screenshot](https://github.com/JuanManuelSanjurjo/CodeLight/blob/master/public/Screenshot_3.jpg)
 
 
 ## Tauri + React + Typescript
