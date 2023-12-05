@@ -2,10 +2,10 @@
 based on the [Monaco Editor](https://microsoft.github.io/monaco-editor/) 
 
 ## Features:
--Simple and easy to use
--Lightweight
--Multi language support
--Single page editor
+- Simple and easy to use
+- Lightweight
+- Multi language support
+- Single page editor
 
 
 ![App Screenshot](https://github.com/JuanManuelSanjurjo/CodeLight/blob/master/public/Screenshot_1.jpg)
