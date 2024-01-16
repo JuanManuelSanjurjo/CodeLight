@@ -1,5 +1,5 @@
 # CodeLight 1.0 for windows.
-based on the [Monaco Editor](https://microsoft.github.io/monaco-editor/) 
+based on the [Monaco Editor](https://microsoft.github.io/monaco-editor/) and built with [Tauri](https://tauri.app/)
 
 ## Features:
 - Simple and easy to use
